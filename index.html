@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ruota della Fortuna - Seoul City</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruota Seoul City</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <h1 class="title">
@@ -15,7 +16,9 @@
 <span>ꜱᴇᴏᴜʟ ᴄɪᴛʏ ʙʀᴏᴏᴋʜᴀᴠᴇɴ</span>
 </h1>
 
-<div class="wheel-wrapper">
+<div class="wheel-container">
+  <div class="pointer"></div>
+
   <div class="wheel" id="wheel">
     <div class="slice slice1">Decidi un evento</div>
     <div class="slice slice2">Decidere il tema di una giornata</div>
@@ -26,6 +29,14 @@
 
 <button id="spinBtn">SPIN</button>
 <p id="result"></p>
+
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b0e0c.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="tickSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d7a1e8f4e.mp3" type="audio/mpeg">
+</audio>
 
 <script src="script.js"></script>
 </body>
