@@ -56,7 +56,14 @@ spinBtn.addEventListener("click", () => {
   wheel.style.transform = `rotate(${degrees}deg)`;
 
   setTimeout(() => {
-    result.textContent = "Hai vinto: " + prize;
+   result.textContent = "Hai vinto: " + prize;
+
+if (prize === "JACKPOT 🎉") {
+  document.body.style.background = "gold";
+  result.style.fontSize = "30px";
+  result.style.fontWeight = "bold";
+  result.textContent = "👑 JACKPOT LEGGENDARIO 👑";
+}
     saveSpinDate();
     isSpinning = false;
   }, 4000);
