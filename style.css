@@ -26,44 +26,11 @@ body {
 }
 
 .wheel-container {
-  position: relative;
   margin: 40px auto;
+  position: relative;
   width: 500px;
   height: 500px;
 }
-
-.wheel {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 15px solid #fff;
-  position: relative;
-  overflow: hidden;
-  transition: transform 4s ease-out;
-
-  background: conic-gradient(
-    #ff00cc 0deg 30deg,
-    #8000ff 30deg 90deg,
-    #ff00cc 90deg 180deg,
-    #8000ff 180deg 360deg
-  );
-}
-
-.slice {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  color: white;
-  text-shadow:
-    0 0 5px #ff00cc,
-    0 0 10px #8000ff;
-}
-
-.s1 { transform: rotate(15deg) translateY(-200px); font-size: 14px; }
-.s2 { transform: rotate(60deg) translateY(-200px); font-size: 16px; }
-.s3 { transform: rotate(135deg) translateY(-200px); font-size: 18px; }
-.s4 { transform: rotate(270deg) translateY(-200px); font-size: 24px; font-weight: bold; }
 
 button {
   margin-top: 20px;
@@ -80,3 +47,19 @@ button {
   margin-top: 20px;
   font-size: 20px;
 }
+
+svg text {
+  font-family: 'Orbitron', sans-serif;
+  fill: white;
+  stroke: black;
+  stroke-width: 0.8;
+  paint-order: stroke;
+  text-shadow:
+    0 0 5px #ff00cc,
+    0 0 10px #8000ff;
+}
+
+.txt1 { font-size: 14px; }
+.txt2 { font-size: 16px; }
+.txt3 { font-size: 18px; }
+.txt4 { font-size: 22px; font-weight: bold; }
