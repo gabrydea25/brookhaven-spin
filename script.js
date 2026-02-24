@@ -3,14 +3,10 @@ const spinBtn = document.getElementById("spinBtn");
 const result = document.getElementById("result");
 
 const prizes = [
-  { name: "500 Cash RP", chance: 25 },
-  { name: "1000 Cash RP", chance: 20 },
-  { name: "XP Boost x2", chance: 15 },
-  { name: "Casa 24h", chance: 15 },
-  { name: "Veicolo Premium", chance: 10 },
-  { name: "Oggetto Raro", chance: 7 },
-  { name: "Ruolo Discord", chance: 5 },
-  { name: "JACKPOT 🎉", chance: 3 }
+  { name: "Decidi un evento", chance: 10 },
+  { name: "Decidere il tema di una giornata", chance: 20 },
+  { name: "Pubblicizzare il tuo canale TikTok", chance: 30 },
+  { name: "Niente", chance: 40 }
 ];
 
 let isSpinning = false;
@@ -18,7 +14,6 @@ let isSpinning = false;
 function canSpinToday() {
   const lastSpin = localStorage.getItem("lastSpinDate");
   const today = new Date().toDateString();
-
   return lastSpin !== today;
 }
 
@@ -50,20 +45,13 @@ spinBtn.addEventListener("click", () => {
   isSpinning = true;
 
   const prize = getRandomPrize();
-  const randomIndex = Math.floor(Math.random() * 8);
-  const degrees = 3600 + (randomIndex * 45);
+  const randomIndex = Math.floor(Math.random() * 4);
+  const degrees = 3600 + (randomIndex * 90);
 
   wheel.style.transform = `rotate(${degrees}deg)`;
 
   setTimeout(() => {
-   result.textContent = "Hai vinto: " + prize;
-
-if (prize === "JACKPOT 🎉") {
-  document.body.style.background = "gold";
-  result.style.fontSize = "30px";
-  result.style.fontWeight = "bold";
-  result.textContent = "👑 JACKPOT LEGGENDARIO 👑";
-}
+    result.textContent = "Hai ottenuto: " + prize;
     saveSpinDate();
     isSpinning = false;
   }, 4000);
