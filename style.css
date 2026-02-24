@@ -51,3 +51,12 @@ button {
   color: white;
   border-radius: 5px;
 }
+.title {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.title span {
+  font-size: 18px;
+  color: #ff4757;
+}
