@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Ruota della Fortuna - Seoul City</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruota Seoul City</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <h1 class="title">
@@ -14,24 +16,16 @@
 <span>ꜱᴇᴏᴜʟ ᴄɪᴛʏ ʙʀᴏᴏᴋʜᴀᴠᴇɴ</span>
 </h1>
 
-<div class="wheel-container">
-  <svg id="wheel" width="500" height="500" viewBox="0 0 500 500">
-    <!-- SPICCHI -->
-    <path d="M250,250 L250,0 A250,250 0 0,1 397.9,102.1 Z" fill="#ff00cc"/>
-    <path d="M250,250 L397.9,102.1 A250,250 0 0,1 469.8,324.2 Z" fill="#8000ff"/>
-    <path d="M250,250 L469.8,324.2 A250,250 0 0,1 250,500 Z" fill="#ff00cc"/>
-    <path d="M250,250 L250,500 A250,250 0 0,1 250,0 Z" fill="#8000ff"/>
-
-    <!-- TESTO -->
-    <text x="250" y="50" text-anchor="middle" class="txt1">Decidi un evento</text>
-    <text x="380" y="150" text-anchor="middle" class="txt2">Decidere il tema di una giornata</text>
-    <text x="350" y="390" text-anchor="middle" class="txt3">Pubblicizzare il tuo canale TikTok</text>
-    <text x="150" y="390" text-anchor="middle" class="txt4">Niente</text>
-  </svg>
-
-  <button id="spinBtn">SPIN</button>
+<div class="wheel-wrapper">
+    <div class="wheel" id="wheel">
+        <div class="slice s1">Decidi un evento</div>
+        <div class="slice s2">Decidere il tema di una giornata</div>
+        <div class="slice s3">Pubblicizzare il tuo canale TikTok</div>
+        <div class="slice s4">Niente</div>
+    </div>
 </div>
 
+<button id="spinBtn">SPIN</button>
 <p id="result"></p>
 
 <script src="script.js"></script>
