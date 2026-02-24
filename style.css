@@ -21,6 +21,14 @@ body {
   height: 100%;
   border-radius: 50%;
   border: 15px solid #fff;
+  position: relative;
+  overflow: hidden;
+  background: conic-gradient(
+    #ff00cc 0deg 30deg,       /* Decidi un evento (piccolissima) */
+    #8000ff 30deg 90deg,      /* Tema giornata (piccola) */
+    #ff00cc 90deg 180deg,     /* Pubblicizzare TikTok (media) */
+    #8000ff 180deg 360deg     /* Niente (grandissima) */
+  );
 }
 
 .wheel {
