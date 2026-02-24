@@ -1,81 +1,87 @@
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 const spinBtn = document.getElementById("spin");
+const bgMusic = document.getElementById("bgMusic");
+const tickSound = document.getElementById("tickSound");
 
 const segments = [
-  "Decidi un evento",
-  "Decidere il tema di una giornata",
-  "Pubblicizzare il tuo canale TikTok",
-  "Niente"
+  { text: "Decidi un evento", size: 0.5 },
+  { text: "Tema giornata", size: 1 },
+  { text: "Pubblicizza TikTok", size: 1.5 },
+  { text: "Niente", size: 3 }
 ];
 
+let totalSize = segments.reduce((sum, s) => sum + s.size, 0);
 let rotation = 0;
 let spinning = false;
 
-/* ------------------ RESPONSIVE CANVAS ------------------ */
+/* RESPONSIVE */
 function resizeCanvas() {
-  const size = Math.min(window.innerWidth * 0.9, 400);
+  const size = Math.min(window.innerWidth * 0.9, 420);
   canvas.width = size;
   canvas.height = size;
   drawWheel();
 }
-
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-/* ------------------ DRAW WHEEL ------------------ */
+/* DISEGNO */
 function drawWheel() {
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-  const radius = canvas.width / 2;
-  const arc = (2 * Math.PI) / segments.length;
-
+  const center = canvas.width / 2;
+  const radius = center;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < segments.length; i++) {
-    const angle = rotation + i * arc;
+  let startAngle = rotation;
 
-    // Colori alternati neon
-    ctx.fillStyle = i % 2 === 0 ? "#ff00c8" : "#7a00ff";
-
+  segments.forEach((seg, i) => {
+    const arc = (seg.size / totalSize) * 2 * Math.PI;
     ctx.beginPath();
-    ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, radius, angle, angle + arc);
+    ctx.moveTo(center, center);
+    ctx.fillStyle = i % 2 === 0 ? "#ff00c8" : "#7a00ff";
+    ctx.arc(center, center, radius, startAngle, startAngle + arc);
     ctx.closePath();
     ctx.fill();
 
-    // Testo
     ctx.save();
-    ctx.translate(centerX, centerY);
-    ctx.rotate(angle + arc / 2);
-    ctx.textAlign = "right";
+    ctx.translate(center, center);
+    ctx.rotate(startAngle + arc / 2);
     ctx.fillStyle = "white";
     ctx.font = `${radius * 0.08}px Orbitron`;
-    ctx.fillText(segments[i], radius - 10, 5);
+    ctx.textAlign = "right";
+    ctx.fillText(seg.text, radius - 10, 5);
     ctx.restore();
-  }
+
+    startAngle += arc;
+  });
 }
 
-/* ------------------ SOUND EFFECTS ------------------ */
-const tickSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3");
-const winSound = new Audio("https://assets.mixkit.co/active_storage/sfx/2762/2762-preview.mp3");
+/* 1 SPIN AL GIORNO */
+function canSpinToday() {
+  const lastSpin = localStorage.getItem("lastSpin");
+  const today = new Date().toDateString();
+  return lastSpin !== today;
+}
 
-/* ------------------ SPIN FUNCTION ------------------ */
 spinBtn.addEventListener("click", () => {
+  if (!canSpinToday()) {
+    alert("Hai già usato la ruota oggi!");
+    return;
+  }
+
   if (spinning) return;
   spinning = true;
+
+  bgMusic.volume = 0.3;
+  bgMusic.play();
 
   const spinAngle = Math.random() * 2000 + 3000;
   const duration = 4000;
   const start = performance.now();
 
   function animate(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeOut = 1 - Math.pow(1 - progress, 3);
-
-    rotation += (spinAngle * easeOut) * 0.002;
-
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    rotation += spinAngle * 0.0005 * ease;
     drawWheel();
 
     if (progress < 1) {
@@ -84,7 +90,7 @@ spinBtn.addEventListener("click", () => {
       requestAnimationFrame(animate);
     } else {
       spinning = false;
-      winSound.play();
+      localStorage.setItem("lastSpin", new Date().toDateString());
       showResult();
     }
   }
@@ -92,14 +98,16 @@ spinBtn.addEventListener("click", () => {
   requestAnimationFrame(animate);
 });
 
-/* ------------------ RESULT ------------------ */
 function showResult() {
-  const arc = (2 * Math.PI) / segments.length;
-  const index = Math.floor(
-    segments.length - (rotation % (2 * Math.PI)) / arc
-  ) % segments.length;
+  let angle = (rotation % (2 * Math.PI));
+  let cumulative = 0;
 
-  setTimeout(() => {
-    alert("Risultato: " + segments[index]);
-  }, 300);
+  for (let seg of segments) {
+    let arc = (seg.size / totalSize) * 2 * Math.PI;
+    if (angle >= cumulative && angle < cumulative + arc) {
+      alert("Risultato: " + seg.text);
+      break;
+    }
+    cumulative += arc;
+  }
 }
