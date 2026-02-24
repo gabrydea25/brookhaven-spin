@@ -51,11 +51,27 @@ button {
   color: white;
   border-radius: 5px;
 }
-.title {
-  font-size: 36px;
+..title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 42px;
   margin-bottom: 30px;
+  color: #00f7ff;
+  text-shadow:
+    0 0 5px #00f7ff,
+    0 0 10px #00f7ff,
+    0 0 20px #00f7ff,
+    0 0 40px #0088ff;
+  letter-spacing: 3px;
 }
 
+.title span {
+  font-size: 18px;
+  color: #ff00cc;
+  text-shadow:
+    0 0 5px #ff00cc,
+    0 0 10px #ff00cc,
+    0 0 20px #ff00cc;
+}
 .title span {
   font-size: 18px;
   color: #ff4757;
