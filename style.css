@@ -84,3 +84,20 @@ button {
   font-size: 18px;
   color: #ff4757;
 }
+.slice {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  color: white;
+  text-shadow:
+    0 0 5px #ff00cc,
+    0 0 10px #ff00cc,
+    0 0 20px #8000ff;
+}
+
+.s1 { transform: rotate(15deg) translateY(-200px); }
+.s2 { transform: rotate(60deg) translateY(-200px); }
+.s3 { transform: rotate(135deg) translateY(-200px); }
+.s4 { transform: rotate(270deg) translateY(-200px); font-size: 22px; }
