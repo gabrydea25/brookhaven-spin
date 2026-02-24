@@ -1,44 +1,27 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruota Seoul City</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruota della Fortuna</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
+  <!-- Font Neon -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1 class="title">
-𝓡ᴜᴏᴛᴀ ᴅᴇʟʟᴀ ꜰᴏʀᴛᴜɴᴀ<br>
-<span>ꜱᴇᴏᴜʟ ᴄɪᴛʏ ʙʀᴏᴏᴋʜᴀᴠᴇɴ</span>
-</h1>
+  <h1 class="title">RUOTA DELLA FORTUNA</h1>
+  <h2 class="subtitle">SEOUL CITY BROOKHAVEN</h2>
 
-<div class="wheel-container">
-  <div class="pointer"></div>
-
-  <div class="wheel" id="wheel">
-    <div class="slice slice1">Decidi un evento</div>
-    <div class="slice slice2">Decidere il tema di una giornata</div>
-    <div class="slice slice3">Pubblicizzare il tuo canale TikTok</div>
-    <div class="slice slice4">Niente</div>
+  <div class="wheel-container">
+    <div class="pointer"></div>
+    <canvas id="wheel"></canvas>
   </div>
-</div>
 
-<button id="spinBtn">SPIN</button>
-<p id="result"></p>
+  <button id="spin">SPIN</button>
 
-<audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b0e0c.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="tickSound">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d7a1e8f4e.mp3" type="audio/mpeg">
-</audio>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
